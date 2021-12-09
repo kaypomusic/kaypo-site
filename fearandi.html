@@ -1,1 +1,27 @@
-<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Femergeradioshow%2Fvideos%2F586946535389627%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+<!DOCTYPE html>
+<html lang="en">
+
+  <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Femergeradioshow%2Fvideos%2F586946535389627%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+
+</html>
+
+<script>
+  let height;
+  const sendPostMessage = () => {
+    if (height !== document.getElementById('container').offsetHeight) {
+      height = document.getElementById('container').offsetHeight;
+      window.parent.postMessage({
+        frameHeight: height
+      }, '*');
+      console.log(height);
+    }
+  }
+
+  window.onload = () => sendPostMessage();
+  window.onresize = () => sendPostMessage();
+  document.getElementById('add-para').onclick = () => sendPostMessage();
+  document.getElementById('remove-para').onclick = () => sendPostMessage();
+
+</script>
+
+
